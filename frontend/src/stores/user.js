@@ -13,6 +13,7 @@ export const useUserStore =defineStore('user',()=>{
     const photo=ref('')
     const profile=ref('')
     const accessToken=ref('')
+    const hasPulledUserInfo = ref(false)//从云端加载信息
 
 // (a,b,c) =>{
 //
@@ -44,6 +45,10 @@ export const useUserStore =defineStore('user',()=>{
         accessToken.value=''
     }
 
+    function setHasPulledUserInfo(newStatus){
+        hasPulledUserInfo.value = newStatus
+    }
+
     return{
         id,
         username,
@@ -54,6 +59,8 @@ export const useUserStore =defineStore('user',()=>{
         setUserInfo,
         logout,
         isLogin,
+        hasPulledUserInfo,
+        setHasPulledUserInfo,
     }
 })
 
